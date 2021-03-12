@@ -1,26 +1,33 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 
 namespace TestTask.ViewModels
 {
-    public class RegistrationViewModel
+    public class SignUpViewModel
     {
         [Required]
         [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "Email is incorrect")]
         public string Email { get; set; }
+
         [Required]
         public string Surname { get; set; }
+
         [Required]
         public string Name { get; set; }
+
         [Required]
-        public int BirthYear { get; set; }
+        public DateTime BirthDate { get; set; }
+
         [Required]
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
+
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
         [Required]
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "Password mismatch")]

@@ -9,18 +9,18 @@ using TestTask.ViewModels;
 
 namespace TestTask.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
-
-        [HttpPost("registration")]
-       public void Registration([FromForm]RegistrationViewModel registration) { }
+        [HttpPost("signup")]
+        public void SignUp([FromForm] SignUpViewModel signUpViewModel) { }
 
         [HttpPost("delete/profile")]
-        public void DeleteProfile([FromForm] DeleteProfileViewModel deleteProfile) { }
+        public void DeleteProfile([FromForm] DeleteProfileViewModel deleteProfileViewModel) { }
 
         [HttpPost("change/credentials")]
-        public void ChangeCredentials([FromBody] DeleteProfileViewModel deleteProfile) { }
+        public void ChangeCredentials([FromBody] DeleteProfileViewModel deleteProfileViewModel) { }
 
         [HttpPost("change/photo")]
         public ActionResult ChangePhoto(IFormFile file)
@@ -39,12 +39,12 @@ namespace TestTask.Controllers
         }
 
         [HttpPost("add/preferences")]
-        public IActionResult AddPreferences([FromBody] List<Preferences> preferences)
+        public IActionResult AddPreferences([FromBody] List<Preferences> preferencesViewModel)
         {
 
             try
             {
-                return Ok(new { status = true, message = preferences });
+                return Ok(new { status = true, message = preferencesViewModel });
             }
             catch (Exception ex)
             {
@@ -55,12 +55,11 @@ namespace TestTask.Controllers
         [HttpGet("get/preferences")]
         public List<Preferences> GetPreferences()
         {
-            
             return new PreferencesViewModel().getPreferences();
         }
 
         [HttpPost("change/preferences")]
-        public IActionResult EditPreferences([FromBody] List<Preferences> editedPreferences)
+        public IActionResult EditPreferences([FromBody] List<Preferences> editedPreferencesViewModel)
         {
             try
             {
@@ -73,7 +72,7 @@ namespace TestTask.Controllers
         }
 
         [HttpPost("delete/preferences")]
-        public IActionResult DeletePreferences([FromBody] List<Preferences> needToDeletePreferences)
+        public IActionResult DeletePreferences([FromBody] List<Preferences> needToDeletePreferencesViewModel)
         {
             try
             {
@@ -86,11 +85,11 @@ namespace TestTask.Controllers
         }
 
         [HttpPost("add/promo")]
-        public IActionResult addPromoCodes([FromBody] PromoCodesViewModel promoCodes)
+        public IActionResult addPromoCodes([FromBody] PromoCodesViewModel promoCodesViewModel)
         {
             try
             {
-                return Ok(new { status = true, message = promoCodes });
+                return Ok(new { status = true, message = promoCodesViewModel });
             }
             catch (Exception ex)
             {
@@ -99,7 +98,7 @@ namespace TestTask.Controllers
         }
 
         [HttpPost("change/promo")]
-        public IActionResult changePromoCodes([FromBody] PromoCodesViewModel promoCodes)
+        public IActionResult changePromoCodes([FromBody] PromoCodesViewModel promoCodesViewModel)
         {
             try
             {
@@ -112,7 +111,7 @@ namespace TestTask.Controllers
         }
 
         [HttpPost("delete/promo")]
-        public IActionResult deletePromoCodes([FromBody] PromoCodesViewModel promoCodes)
+        public IActionResult deletePromoCodes([FromBody] PromoCodesViewModel promoCodesViewModel)
         {
             try
             {
