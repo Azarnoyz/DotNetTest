@@ -13,16 +13,15 @@ namespace Store.API.Controllers
     [ApiController]
     public class UserProfileController : ControllerBase
     {
-        [HttpPost("delete/profile")]
+        [HttpDelete]
         public void DeleteProfile([FromForm] DeleteProfileViewModel deleteProfileViewModel) { }
 
-        [HttpPost("change/credentials")]
+        [HttpPatch]
         public void ChangeCredentials([FromBody] DeleteProfileViewModel deleteProfileViewModel) { }
 
-        [HttpPost("change/photo")]
-        public ActionResult ChangePhoto(IFormFile file)
+        [HttpPut("change-photo")]
+        public ActionResult ChangePhoto(Guid userId, IFormFile file)
         {
-
             var image = file;
 
             if (image.Length > 0)

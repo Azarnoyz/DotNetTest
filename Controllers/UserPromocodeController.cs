@@ -12,7 +12,7 @@ namespace Store.API.Controllers
     [ApiController]
     public class UserPromocodeController : ControllerBase
     {
-        [HttpPost("add/promo")]
+        [HttpPost]
         public IActionResult addPromoCodes([FromBody] PromoCodesViewModel promoCodesViewModel)
         {
             try
@@ -25,7 +25,7 @@ namespace Store.API.Controllers
             }
         }
 
-        [HttpPost("change/promo")]
+        [HttpPut]
         public IActionResult changePromoCodes([FromBody] PromoCodesViewModel promoCodesViewModel)
         {
             try
@@ -38,7 +38,8 @@ namespace Store.API.Controllers
             }
         }
 
-        [HttpPost("delete/promo")]
+        [HttpDelete]
+
         public IActionResult deletePromoCodes([FromBody] PromoCodesViewModel promoCodesViewModel)
         {
             try

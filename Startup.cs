@@ -30,7 +30,7 @@ namespace TestTask
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TestTask", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Store", Version = "v1" });
             });
         }
 
@@ -41,7 +41,7 @@ namespace TestTask
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TestTask v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Store v1"));
             }
 
             app.UseHttpsRedirection();

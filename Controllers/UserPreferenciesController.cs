@@ -12,10 +12,9 @@ namespace Store.API.Controllers
     [ApiController]
     public class UserPreferenciesController : ControllerBase
     {
-        [HttpPost("add/preferences")]
+        [HttpPost]
         public IActionResult AddPreferences([FromBody] List<Preferences> preferencesViewModel)
         {
-
             try
             {
                 return Ok(new { status = true, message = preferencesViewModel });
@@ -26,14 +25,14 @@ namespace Store.API.Controllers
             }
         }
 
-        [HttpGet("get/preferences")]
+        [HttpGet]
         public List<Preferences> GetPreferences()
         {
             return new PreferencesViewModel().getPreferences();
         }
 
-        [HttpPost("change/preferences")]
-        public IActionResult EditPreferences([FromBody] List<Preferences> editedPreferencesViewModel)
+        [HttpPut]
+        public IActionResult UpdatePreferences([FromBody] List<Preferences> editedPreferencesViewModel)
         {
             try
             {
@@ -45,7 +44,7 @@ namespace Store.API.Controllers
             }
         }
 
-        [HttpPost("delete/preferences")]
+        [HttpDelete]
         public IActionResult DeletePreferences([FromBody] List<Preferences> needToDeletePreferencesViewModel)
         {
             try
