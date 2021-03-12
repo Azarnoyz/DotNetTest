@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Store.API.ViewModels.PromoCode;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +14,11 @@ namespace Store.API.Controllers
     public class UserPromocodeController : ControllerBase
     {
         [HttpPost]
-        public IActionResult addPromoCodes([FromBody] PromoCodesViewModel promoCodesViewModel)
+        public IActionResult Add([FromBody] AddPromoCodeViewModel promoCodeViewModel)
         {
             try
             {
-                return Ok(new { status = true, message = promoCodesViewModel });
+                return Ok(new { status = true, message = promoCodeViewModel });
             }
             catch (Exception ex)
             {
