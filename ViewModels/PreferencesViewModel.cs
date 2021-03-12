@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestTask.ViewModels
 {
+    [Obsolete]
     public class PreferencesViewModel
     {
         public List<Preferences> preferences = new List<Preferences>();

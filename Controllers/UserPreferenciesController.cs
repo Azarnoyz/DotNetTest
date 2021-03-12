@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Store.API.ViewModels.Preferencies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +14,12 @@ namespace Store.API.Controllers
     public class UserPreferenciesController : ControllerBase
     {
         [HttpPost]
-        public IActionResult AddPreferences([FromBody] List<Preferences> preferencesViewModel)
+        [Route("{userId}")]
+        public IActionResult Add(Guid userId, [FromBody] AddPreferenceViewModel preferenceViewModel)
         {
             try
             {
-                return Ok(new { status = true, message = preferencesViewModel });
+                return Ok(new { status = true, message = preferenceViewModel });
             }
             catch (Exception ex)
             {
@@ -25,14 +27,14 @@ namespace Store.API.Controllers
             }
         }
 
-        [HttpGet]
-        public List<Preferences> GetPreferences()
+        [HttpGet("{userId}")]
+        public IActionResult Get()
         {
-            return new PreferencesViewModel().getPreferences();
+            return Ok(new PreferencesViewModel().getPreferences());
         }
 
         [HttpPut]
-        public IActionResult UpdatePreferences([FromBody] List<Preferences> editedPreferencesViewModel)
+        public IActionResult Update([FromBody] UpdatePreferenceViewModel updatePreferenceViewModel)
         {
             try
             {
@@ -45,7 +47,8 @@ namespace Store.API.Controllers
         }
 
         [HttpDelete]
-        public IActionResult DeletePreferences([FromBody] List<Preferences> needToDeletePreferencesViewModel)
+        [Route("{userId}/{preferenceId}")]
+        public IActionResult Delete(Guid userId, Guid preferenceId)
         {
             try
             {
