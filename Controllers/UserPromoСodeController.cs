@@ -11,14 +11,14 @@ namespace Store.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserPromocodeController : ControllerBase
+    public class UserPromoСodeController : ControllerBase
     {
         [HttpPost]
-        public IActionResult Add([FromBody] AddPromoCodeViewModel promoCodeViewModel)
+        public IActionResult Add([FromBody] AddPromoCodeViewModel addPromoCodeViewModel)
         {
             try
             {
-                return Ok(new { status = true, message = promoCodeViewModel });
+                return Ok(new { status = true, message = addPromoCodeViewModel });
             }
             catch (Exception ex)
             {
@@ -27,11 +27,11 @@ namespace Store.API.Controllers
         }
 
         [HttpPut]
-        public IActionResult changePromoCodes([FromBody] PromoCodesViewModel promoCodesViewModel)
+        public IActionResult Update([FromBody] UpdatePromoCodeViewModel updatePromoCodeViewModel)
         {
             try
             {
-                return Ok(new { status = true, message = "CHanged" });
+                return Ok(new { status = true, message = "Updated" });
             }
             catch (Exception ex)
             {
@@ -40,8 +40,8 @@ namespace Store.API.Controllers
         }
 
         [HttpDelete]
-
-        public IActionResult deletePromoCodes([FromBody] PromoCodesViewModel promoCodesViewModel)
+        [Route("{promoCodeId}")]
+        public IActionResult Delete(Guid promocodeId)
         {
             try
             {

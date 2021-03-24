@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Store.API.ViewModels.PromoCode
 {
-    public class AddPromoCodeViewModel
+    public class UpdatePromoCodeViewModel
     {
         [Required]
         public Guid PromoCodeId { get; set; }
 
         [Required]
-        public string PromoCodeName { get; set; }
+        public string PromoCode { get; set; }
     }
 }
